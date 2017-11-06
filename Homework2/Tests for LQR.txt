@@ -1,0 +1,7 @@
+Tests for LQR
+
+Impuls on f, w aplitude 1 phase delay 3 sek. 
+
+Cheap R = 0.1. 
+Expensive R = 100.
+Q = diag(1,1,1,1);
