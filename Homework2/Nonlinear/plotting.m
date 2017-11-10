@@ -1,14 +1,16 @@
 close all;
 
 %%Importing data 
-load('expensive.mat');
+load('noise impulse/expensive.mat');
+%load('expensive.mat');
 t_expensive = data(1,:)*0.1;
 u_expensive = data(2,:);
 x_expensive = data(3,:);
 theta_expensive = data(4,:);
 clear data;
 
-load('cheap.mat');
+load('noise impulse/cheap.mat');
+%load('cheap.mat');
 t_cheap = data(1,:)*0.1;
 u_cheap = data(2,:);
 x_cheap = data(3,:);

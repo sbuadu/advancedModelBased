@@ -1,6 +1,7 @@
 close all;
 
 %%Importing data 
+%load('impulse noise/expensive.mat');
 load('expensive.mat');
 t_expensive = data(1,:);
 u_expensive = data(2,:);
@@ -8,6 +9,7 @@ x_expensive = data(3,:);
 theta_expensive = data(4,:);
 clear data;
 
+%load('impulse noise/cheap.mat');
 load('cheap.mat');
 t_cheap = data(1,:);
 u_cheap = data(2,:);
