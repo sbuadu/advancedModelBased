@@ -1,4 +1,4 @@
- %% Input data
+%% Input data
 L=1.4;      % [m]
 M=1;        % [kg]
 m=3/4;      % [kg]
@@ -34,7 +34,7 @@ E=[0 0;
     0 0.64];
 
 % x, theta, x_dot, theta_dot
-Q = diag([1, 1, 1, 1, 0, 0]);
+Q = diag([1, 1, 1, 1,0, 0]);
 R = 1;
 
 K = lqr(A, B, Q, R);
@@ -43,8 +43,8 @@ K = lqr(A, B, Q, R);
 [phi,gamma]=c2d(A,E,h);
 X_0=[0 0 0 0 0 0]';
 y_0=[0 0];
-P_0=diag([1,1,1,1,1,1])*0.00001;
+P_0=diag([1,1,1,1,100,100])*0.1;
 
-Q_kalman=diag([(0), (0)]);                  % Process white noise
+Q_kalman=diag([(10), (10e-4)]);              % Process white noise
 
-R_kalman=diag([(10e-7), (10e-6)]);           % Measurement noise
+R_kalman=diag([(10e-7), (10e-7)]);           % Measurement noise
