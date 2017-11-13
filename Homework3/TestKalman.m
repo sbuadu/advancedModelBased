@@ -12,11 +12,11 @@ T_max=100;  % Simuation time
 x_0 = 0;
 x_dot0 = 0;
 x_dotdot0 = 0;
-theta_0 = 0;
+theta_0 = 0.1;%deg2rad(10);
 theta_dot0 =0 ;
 theta_dotdot0 = 0;
 
-%% Input to Kalman
+%% State space
 A = [0 0 1 0 0 0 ; 
    0 0 0 1 0 0 ;
    -k/M -m*g/M -b/M 0 0 0 ;
@@ -34,17 +34,31 @@ E=[0 0;
     0 0.64];
 
 % x, theta, x_dot, theta_dot
+%% LQR stuff
 Q = diag([1, 1, 1, 1,0, 0]);
 R = 1;
 
 K = lqr(A, B, Q, R);
 
+%% Kalman stuff
 [Phi,delta]=c2d(A,B,h); 
 [phi,gamma]=c2d(A,E,h);
-X_0=[0 0 0 0 0 0]';
+X_0=[x_0 theta_0 x_dot0 theta_dot0 0 0]';
 y_0=[0 0];
-P_0=diag([1,1,1,1,100,100])*0.1;
+P_0=diag([1,1,1,1,100,100])*0.001;
 
 Q_kalman=diag([(10), (10e-4)]);              % Process white noise
 
 R_kalman=diag([(10e-7), (10e-7)]);           % Measurement noise
+%R_kalman=diag([(0), (0)]);
+%% Kalmanfilter 2
+Ts=h;
+D=0;
+B_kalman=[B,E];
+sys=ss(A,B_kalman,H,D);
+
+[kest,L_kalman,P_kalman,M_kalman,Z_kalman] = kalmd(sys,Q_kalman,R_kalman,Ts);
+A_disk=kest.a;
+B_disk=kest.b;
+C_disk=kest.c;
+C_disk=C_disk(1:2,:);
