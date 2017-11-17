@@ -1,0 +1,51 @@
+CC     = "C:\Program Files (x86)\MATLAB\R2014b\sys\lcc\bin\lcc.exe"
+LD     = "C:\Program Files (x86)\MATLAB\R2014b\sys\lcc\bin\lcclnk.exe"
+LIBCMD = "C:\Program Files (x86)\MATLAB\R2014b\sys\lcc\bin\lcclib.exe"
+CFLAGS = -c -Zp8 -DMATLAB_MEX_FILE -noregistrylookup 
+LDFLAGS = -s -dll -L"C:\Program Files (x86)\MATLAB\R2014b\sys\lcc\lib" 
+LIBFLAGS = 
+
+OBJECTS = \
+	"Model_sfun.obj"\
+	"c1_Model.obj"\
+	"c2_Model.obj"\
+	"c3_Model.obj"\
+	"c4_Model.obj"\
+	"c5_Model.obj"\
+	"Model_sfun_registry.obj"\
+	"lccstub.obj"\
+	"C:\Program Files (x86)\MATLAB\R2014b\sys\lcc\mex\lccdef.def"\
+	"C:\Program Files (x86)\MATLAB\R2014b\extern\lib\win32\lcc\sf_runtime.lib"\
+	"C:\Program Files (x86)\MATLAB\R2014b\extern\lib\win32\lcc\libmwblas.lib"\
+	"C:\Program Files (x86)\MATLAB\R2014b\extern\lib\win32\lcc\libmx.lib"\
+	"C:\Program Files (x86)\MATLAB\R2014b\extern\lib\win32\lcc\libmex.lib"\
+	"C:\Program Files (x86)\MATLAB\R2014b\extern\lib\win32\lcc\libmat.lib"\
+	"C:\Program Files (x86)\MATLAB\R2014b\extern\lib\win32\lcc\libfixedpoint.lib"\
+	"C:\Program Files (x86)\MATLAB\R2014b\extern\lib\win32\lcc\libut.lib"\
+	"C:\Program Files (x86)\MATLAB\R2014b\extern\lib\win32\lcc\libmwmathutil.lib"\
+	"C:\Program Files (x86)\MATLAB\R2014b\extern\lib\win32\lcc\libemlrt.lib"\
+	"C:\Program Files (x86)\MATLAB\R2014b\extern\lib\win32\lcc\libmwsl_log_load_blocks.lib"\
+	"C:\Program Files (x86)\MATLAB\R2014b\extern\lib\win32\lcc\libmwsimulink.lib"\
+	"C:\Program Files (x86)\MATLAB\R2014b\lib\win32\libmwipp.lib"\
+
+INCLUDE_PATH= -I"C:\Program Files (x86)\MATLAB\R2014b\sys\lcc\include"  -I"C:\Program Files (x86)\MATLAB\R2014b\extern\include"  -I"C:\Program Files (x86)\MATLAB\R2014b\simulink\include"  -I"C:\Program Files (x86)\MATLAB\R2014b\stateflow\c\mex\include"  -I"C:\Program Files (x86)\MATLAB\R2014b\rtw\c\src"  -I"C:\Users\Erik\Documents\MATLAB\9.Semester\advancedModelBased\Homework3\slprj\_sfprj\Model\_self\sfun\src" 
+ 
+
+Model_sfun.mexw32 : $(MAKEFILE) $(OBJECTS)
+	$(LD) $(LDFLAGS) -o Model_sfun.mexw32 @Model_sfun.lmko
+Model_sfun.obj :	"Model_sfun.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "Model_sfun.c"
+c1_Model.obj :	"c1_Model.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c1_Model.c"
+c2_Model.obj :	"c2_Model.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c2_Model.c"
+c3_Model.obj :	"c3_Model.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c3_Model.c"
+c4_Model.obj :	"c4_Model.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c4_Model.c"
+c5_Model.obj :	"c5_Model.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c5_Model.c"
+Model_sfun_registry.obj :	"Model_sfun_registry.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "Model_sfun_registry.c"
+lccstub.obj :	"C:\Program Files (x86)\MATLAB\R2014b\sys\lcc\mex\lccstub.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "C:\Program Files (x86)\MATLAB\R2014b\sys\lcc\mex\lccstub.c"
