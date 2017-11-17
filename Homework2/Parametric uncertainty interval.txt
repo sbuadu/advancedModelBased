@@ -1,0 +1,32 @@
+Parametric uncertainty interval
+
+Linear system:
+Method:
+Find K with L = 1.4;
+Find eig(A-BK) when altering L affects A and B. 
+Log for which value of L the eigen values have a positive real part.
+
+
+Q/R = 10
+L \in [0,2.9210]
+
+
+Q/R = 1
+L \in [0,4.1760]
+L \in [0,4.18)
+nøyaktig: 4.1776 precision 5*10e-5
+
+
+Q/R = 0.1
+L \in [0, 7.2110]
+
+
+
+Nonlinear system:
+Method: 
+Set L value and run simulation. Plot theta to see when it becomes unstable. 
+Q/R = 1. 
+
+Stable for L \in [0, 3.58m]
+
+3.588
