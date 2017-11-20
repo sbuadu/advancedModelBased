@@ -67,9 +67,6 @@ K = lqr(A, B, Q, R ); %controller optimized for L=1.4
 % title('Cheap vs expensive control: Control input u', 'Interpreter', 'latex',  'FontSize', 18);
 % xlabel('Time [s]','Interpreter', 'latex',  'FontSize', 18);
 % ylabel('Force [N]', 'Interpreter', 'latex',  'FontSize', 18);
-% 
-% 
-% 
 
 
 % %% checking controller gains for cheap and expensive control
@@ -86,11 +83,8 @@ K = lqr(A, B, Q, R ); %controller optimized for L=1.4
 % K = lqr(A, B, Q, R );
 % k(i,:) = K;
 % end
-%
-%
-%
-%
-%
+
+
 % %% Plotting the controller gains.
 % figure
 % plot(ratio_1,k(:,1));
@@ -185,35 +179,35 @@ for i = 1:length(L_vec)
         k/(M*L) (m+M)/(M*L)*g b/(M*L) 0];
     B = [0 0 1/M -1/(L*M)]';
 
-    res = eig(A-B*K)
+    res = eig(A-B*K);
     
-% 
-%     for j=1:length(res)
-%         if real(res(1)) >0
-%             unstable(i) = 1;
-% 
-%         end
-%         if real(res(2)) >0
-%             unstable(i) = 1;
-% 
-%         end
-%         if real(res(3)) >0
-%             unstable(i) = 1;
-% 
-%         end
-%         if real(res(4)) >0
-%             unstable(i) = 1;
-%         end
-%     end
-% 
-% end
-% 
-% 
-% for k = 1:length(unstable)
-%    if(unstable(k) == 1)
-%     disp(k);
-%     break
-%    end
+
+    for j=1:length(res)
+        if real(res(1)) >0
+            unstable(i) = 1;
+
+        end
+        if real(res(2)) >0
+            unstable(i) = 1;
+
+        end
+        if real(res(3)) >0
+            unstable(i) = 1;
+
+        end
+        if real(res(4)) >0
+            unstable(i) = 1;
+        end
+    end
+
+end
+
+
+for k = 1:length(unstable)
+   if(unstable(k) == 1)
+    disp(k);
+    break
+   end
 end
 
 
